@@ -15,8 +15,12 @@ var server = app.listen(4000, function(){
 
 
 // socket setup on back-end
+
 var io = socket(server);
-io.on('connection', function(){
-    console.log('made socket connection', socket.id)
+io.on('connection', function(socket){
+    console.log('made socket connection', socket.id);
+    socket.on('chat', (data) => {
+       io.sockets.emit('chat', data)
+    });
 })
 
