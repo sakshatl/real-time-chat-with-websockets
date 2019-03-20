@@ -5,23 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Websockets 101</title>
+       <!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-   
-    <div id="mario-chat">
-        <div id="chat-window">
-            <div id="output"></div>
+    <div class="container chat-app">
+        <div class="row">
+            <div class="col m6 s12">
+                <div id="chat-window">
+                    <div id="output"></div>
+                </div>
+                <div class="input-field">
+                    <input id="handle" type="text" placeholder="Handle: " />
+                </div>
+                <div class="input-field">
+                    <input type="text" name="" id="message" placeholder="Message: "/>
+                </div>
+                <button id="send" class="btn grey darken-4 z-depth-0">SEND</button>
+            </div>
+        </div>   
         </div>
-        <input id="handle" type="text" placeholder="Handle" />
-        <input type="text" name="" id="message" placeholder="Message"/>
-        <button id="send">SEND</button>
     </div>
 
 
-
-
+    <!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
 <script src="chat.js"></script>
 </body>
