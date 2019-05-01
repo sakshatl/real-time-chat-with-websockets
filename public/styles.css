@@ -1,0 +1,21 @@
+#output-box{
+    padding: 20px;
+    height: 300px;
+    overflow-y: scroll;
+    background-color: #eee;
+}
+#chat-form{
+    padding: 20px 20px;
+    background-color: lightblue;
+    height: 200px;
+}
+#chat-form input::placeholder{
+    color: #3c3c3c;
+}
+.chat-string{
+    padding: 5px;
+    border-radius: 20px;
+}
+p{
+    font-size: 16px;
+}
