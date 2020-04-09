@@ -1,58 +1,19 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat App</title>
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-<!--icon library-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-<!--custom css-->
-<link rel="stylesheet" href="/styles.css">
+    <title>Document</title>
 </head>
+
 <body>
-    <div class="app container">
-        <div class="row">
-            <h3 class="grey-text text-darken-4 center-align">Chat App</h3>
-            <p class="flow-text center-align grey-text text-darken-4">made with Sockets.IO</p>
-            <div class="col s12">
-                <div id="output-box" class="grey lighten-4">
-
-                </div>
-            </div>
-            <div class="col s12" id="">
-                    <form action="" class="grey lighten-4" id="chat-form">
-                        <div class="col s6">
-                            <div class="input-field">
-                                <input type="text" id="handle" required>
-                                <label for="handle">Handle:</label>
-                            </div>
-                        </div>
-                        <div class="col s9">
-                            <div class="input-field">
-                                <input id="message" type="text" placeholder="Message..." required>
-                            </div>
-                        </div>
-                        <div class="col s3">
-                            <button id="send-btn" type="submit" class="btn z-depth-0 grey darken-4"><i class="fas fa-arrow-circle-right"></i></button>
-                        </div>
-                    </form>
-            </div>
+    <form action="chat.html">
+        <div>
+            <label for="username">Enter a username</label>
+            <input type="text" name="username">
         </div>
-    </div>
-
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
-    
-    <!--Socket.IO client cdn-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
-    
-    <!--custom javascript -->
-    <script src="/app.js"></script>
+        <button type="submit">JOIN IN</button>
+    </form>
 </body>
+
 </html>

@@ -1,20 +1,41 @@
 const express = require('express');
-const socket = require('socket.io');
+const path = require('path');
+const http = require('http');
+const socketio = require('socket.io');
+const formatMessage = require('./formatMessage');
 
 let app = express();
+const server = http.createServer(app);
+const io = socketio(server);
 
-app.use(express.static('./public'))
+// use the static folder
+app.use(express.static(path.join(__dirname, "public")));
 
-let server = app.listen(5000);
+// run when a client connects
+io.on('connection', socket => {
+    // console.log("Client connected")
+    socket.emit('message', "Welcome to ChatIt!");
 
-let io = socket(server);
+    // Broadcast when a user connects
+    socket.broadcast.emit("message", "A new user has joined");  // This will emit to everybody except the user
+    // io.emit(); // this will emit to all the clients in general
 
-io.on('connection', function(socket){
-    console.log('socket connection made', socket.id);
-    
-    socket.on('chat', function(data){
-        io.emit('chat', data)
+
+    // listen for chat message
+    socket.on("chatMessage", chatMessage => {
+        // console.log(chatMessage);
+        io.emit("message", chatMessage);
     })
 
-});
 
+    socket.on("disconnect", () => {
+        io.emit("message", "A user has left the chat");
+    })
+
+})
+
+
+const PORT = 3000 || process.env.PORT;
+server.listen(PORT, () => {
+    console.log("server up and running on port", PORT)
+})

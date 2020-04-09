@@ -1,0 +1,137 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    .chatApp {
+      position: relative;
+      height: 100vh;
+    }
+
+    .chatScreen {
+      padding-left: 300px;
+    }
+
+    .chatMessages {
+      height: 80vh;
+      padding: 10px;
+      overflow-y: scroll;
+    }
+
+    .chatForm {
+      position: absolute;
+      z-index: 100;
+      bottom: 0;
+      width: 100%;
+      padding: 5px;
+      background-color: white;
+    }
+
+    .chatForm form {
+      width: 80%;
+      padding-left: 300px;
+    }
+
+    .message {
+      padding-left: 20px;
+      padding-top: 10px;
+    }
+
+    .meta {
+      display: block;
+      font-size: 12px;
+    }
+
+    .text {
+      display: block;
+      font-size: 13px;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      background-color: #eeeeee;
+      color: #4d4d4d;
+    }
+
+    input.browser-default {
+      display: block;
+      width: 100%;
+      height: calc(1.5em + .75rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+
+
+    @media only screen and (max-width : 992px) {
+      .chatScreen {
+        padding-left: 0px;
+      }
+
+      .chatForm form {
+        width: 80%;
+        padding-left: 20px;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <ul id="slide-out" style="border-right: 1px solid #e0e0e0;" class="sidenav sidenav-fixed z-depth-0 grey lighten-4">
+
+  </ul>
+  <div class="chatApp">
+    <div class="chatScreen row">
+      <nav style="border-bottom: 1px solid #e0e0e0;" class="grey lighten-4 z-depth-0">
+        <ul class="right">
+          <li><a href="" class="btn grey z-depth-0">LEAVE ROOM</a></li>
+        </ul>
+      </nav>
+      <div id="chatMessages" class="chatMessages col l10 m12 s12">
+      </div>
+      <div class="chatActions col l2 hide-on-med-and-down">
+
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid #e0e0e0;" class=" chatForm grey lighten-4">
+      <form id="chatForm" action="">
+        <div class="input-field">
+          <input class="browser-default" name="chat-message" type="text" placeholder="Enter your chat message...">
+          </input>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>

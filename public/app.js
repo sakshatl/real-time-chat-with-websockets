@@ -1,27 +1,41 @@
-let socket = io('http://localhost:5000');
+const socket = io();
 
-        let chatForm = document.querySelector('#chat-form');
-        let message = document.querySelector('#message');
-        let handle = document.querySelector('#handle');
-        let outputBox = document.querySelector('#output-box');
+    socket.on("message", message => {
+      console.log(message)
+    });
 
+    let chatForm = document.querySelector("#chatForm");
+    let chatMessages = document.querySelector('#chatMessages');
 
-        chatForm.addEventListener('submit', function(e){
-            e.preventDefault();
-            socket.emit('chat', {
-                handle: handle.value,
-                message: message.value
-            });
-            chatForm.reset();
+    socket.on("message", message => {
+      outputMessage(message); // message from the server
 
-        })
-
-        socket.on('chat', function(data){
-            outputBox.innerHTML += `
-                <p class="chat-string grey lighten-3"><strong class="greyt-text text-darken-4">${data.handle}:</strong> ${data.message}</p>
-                <div class="divider"></div>
-            `
-        })
+      // scroll down behaviour to the lastest message
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    })
 
 
-    
+    // function template for output message ui
+    function outputMessage(message) {
+      const div = document.createElement("DIV")
+      div.classList.add("message");
+      div.innerHTML = `
+      <span class="meta">Sakshat <span>03:58</span></span>
+      <span class="text"> ${message} </span>
+      `;
+      document.querySelector('#chatMessages').append(div);
+
+    }
+
+    // handle chat form event
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // get msg text
+      let chatMessage = e.target["chat-message"];
+      if (chatMessage.value) {
+        // emitting a msg to the server
+        socket.emit("chatMessage", chatMessage.value);
+        // clear off the input then
+        chatMessage.value = "";
+      }
+    });
