@@ -14,22 +14,21 @@ app.use(express.static(path.join(__dirname, "public")));
 // run when a client connects
 io.on('connection', socket => {
     // console.log("Client connected")
-    socket.emit('message', "Welcome to ChatIt!");
+    socket.emit('message', { type: "Welcome text", sender: "Chatbot", message: "Welcome to ChatIt!" });
 
     // Broadcast when a user connects
-    socket.broadcast.emit("message", "A new user has joined");  // This will emit to everybody except the user
+    socket.broadcast.emit("message", { type: "New user", sender: "Chatbot", message: "A new user has joined" });  // This will emit to everybody except the user
+
     // io.emit(); // this will emit to all the clients in general
-
-
     // listen for chat message
-    socket.on("chatMessage", chatMessage => {
+    socket.on("chatMessage", data => {
         // console.log(chatMessage);
-        io.emit("message", chatMessage);
+        io.emit("message", data);
     })
 
-
+    // when client disconnects
     socket.on("disconnect", () => {
-        io.emit("message", "A user has left the chat");
+        io.emit("message", { type: "Disconnect text", sender: "Chatbot", message: "A user has left" });
     })
 
 })
